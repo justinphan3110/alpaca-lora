@@ -1,8 +1,8 @@
 #!/bin/bash
-
+export WORLD_SIZE=4
 source /opt/rh/devtoolset-10/enable
 
-srun --nodes=1 --gpus-per-node=4 WORLD_SIZE=4 deepspeed finetune.py \
+srun --nodes=1 --gpus-per-node=4 deepspeed ../finetune.py \
     --base_model='/data/long_phan/llama_hf_weights/llama-7b' \
     --data_path='yahma/alpaca-cleaned' \
     --output_dir='out/lora-alpaca_7B' \
