@@ -1,10 +1,9 @@
 #!/bin/bash
+export WORLD_SIZE=8
 
 source /opt/rh/devtoolset-10/enable
 
-conda activate alpaca-lora
-
-srun --nodes=2 --gpus-per-node=2 WORLD_SIZE=8 deepspeed finetune.py \
+srun --nodes=2 --gpus-per-node=8 deepspeed finetune.py \
     --base_model='/data/long_phan/llama_hf_weights/llama-30b' \
     --data_path='yahma/alpaca-cleaned' \
     --output_dir='out/lora-alpaca_30B' \
